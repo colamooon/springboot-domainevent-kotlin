@@ -20,7 +20,7 @@ class Post : AggregateRoot<Post>() {
     private var rewardStatus = RewardStatus.INIT
 
     fun rewarded() {
-        this.rewardStatus = RewardStatus.DONE
+        this.rewardStatus = RewardStatus.DOING
         registerEvent(PostRewardEvent(this))
     }
 

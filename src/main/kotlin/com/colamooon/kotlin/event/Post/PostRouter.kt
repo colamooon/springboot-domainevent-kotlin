@@ -13,6 +13,7 @@ class PostRouter {
         accept(APPLICATION_JSON).nest {
             GET("/post/{id}", handler::getPost)
             GET("/post", handler::listPost)
+            GET("/post/title/{title}", handler::findByTitle)
         }
         POST("/post", handler::createPost)
     }

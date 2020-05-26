@@ -30,6 +30,13 @@ class PostHandler(private val repository: PostRepository, private val postServic
 
     }
 
+    fun findByTitle(request: ServerRequest): ServerResponse {
+        val title = request.pathVariable("title")
+        return postService.findByTitle(title)?.let { ok().contentType(APPLICATION_JSON).body(it) }
+                ?: ServerResponse.notFound().build()
+
+    }
+
     fun entityToView(post: Post): PostView {
         val postView = PostView()
         postView.getView(post)

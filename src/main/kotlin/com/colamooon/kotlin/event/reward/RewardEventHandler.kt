@@ -12,11 +12,12 @@ class RewardEventHandler(private val rewardRepository: RewardRepository) {
     @EventListener
     @Transactional
     fun handle(event: PostRewardEvent) {
-        try {
-            Thread.sleep(5000)
-        } catch (e: InterruptedException) {
-            e.printStackTrace()
-        }
+        throw IllegalArgumentException("event transaction test")
+//        try {
+//            Thread.sleep(5000)
+//        } catch (e: InterruptedException) {
+//            e.printStackTrace()
+//        }
         rewardRepository.save(Reward(event.postId, 1L))
 
     }
